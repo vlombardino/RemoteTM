@@ -5,7 +5,7 @@ Tomcat server running [RemoteTM Web Server](https://www.maxprograms.com/products
 * Ubuntu 20.04
 * OpenJDK (11.0.7)
 * Tomcat (9.0.31-1)
-* RemoteTM Web Server (4.0-6
+* RemoteTM Web Server (4.0-6)
   * Database Backup Scripts
 
 ## Notes
