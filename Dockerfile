@@ -21,7 +21,8 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y \
         sudo \
-    	default-jdk-headless \
+        unzip \
+        default-jdk-headless \
         tomcat9 \
         tomcat9-admin \
         tomcat9-docs \
