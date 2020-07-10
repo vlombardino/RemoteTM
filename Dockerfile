@@ -51,7 +51,7 @@ RUN apt-get update -y && \
     mv /tmp/tomcat-users.xml /etc/tomcat9/tomcat-users.xml.mod && \
     mv /tmp/docker-entrypoint.sh /usr/local/bin/ && \
     mv /tmp/RemoteTM-backup.sh /usr/local/bin/ && \
-    mv /tmp/backup/ /srv/files/
+    mv /tmp/backup /srv/files/
 
 #expose volumes
 VOLUME ["/srv/webapps","/srv/backup","/srv/logs","/opt"]
