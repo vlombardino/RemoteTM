@@ -5,12 +5,18 @@ cp -f /etc/tomcat9/tomcat-users.xml.mod /etc/tomcat9/tomcat-users.xml
 sed -i "s|TOM_USER|$TOM_USER|g" /etc/tomcat9/tomcat-users.xml
 sed -i "s|TOM_PASS|$TOM_PASS|g" /etc/tomcat9/tomcat-users.xml
 
+#move ROOT folder to webapps
+if [ -d "/tmp/ROOT" ]; then
+   mv /tmp/ROOT /var/lib/tomcat9/webapps/ROOT
+fi
+
 #move and rename RemoteTM.war into folder webapps
 if [ -f "/tmp/RemoteTM.war" ]; then
    mv /tmp/RemoteTM.war /var/lib/tomcat9/webapps/RemoteTM.war
 fi
 
-sed -i -e '9,11s/^/#/' -e '13s/^/#/' /usr/local/bin/docker-entrypoint.sh
+sed -i -e '9,11s/^/#/' -e '18s/^/#/' /usr/local/bin/docker-entrypoint.sh
+sed -i -e '14,16s/^/#/' -e '19s/^/#/' /usr/local/bin/docker-entrypoint.sh
 
 #start tomcat
 exec /usr/share/tomcat9/bin/catalina.sh run
