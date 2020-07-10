@@ -10,12 +10,12 @@ Tomcat server running [RemoteTM Web Server](https://www.maxprograms.com/products
 
 ## Notes
 Tomcat management console has been defaulted to admin:admin. If you would like to use a different username and/or password change the following:
-* TOM_USER="admin"
-* TOM_PASS="admin"
+* TOM_USER="***admin***"
+* TOM_PASS="***admin***"
 
 Backup scripts need a username and password. For the backup script to work change sysadmin:nopassword to the correct admin account:
-* BACK_USER="sysadmin"
-* BACK_PASSWORD="nopassword"
+* BACK_USER="***sysadmin***"
+* BACK_PASSWORD="***nopassword***"
 
 ```
 docker create \
