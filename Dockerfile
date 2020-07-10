@@ -16,9 +16,6 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     BACK_USER="sysadmin" \
     BACK_PASSWORD="nopassword"
 
-#add needed files
-COPY files/ /tmp/
-
 #install packages
 RUN apt-get update -y && \
     apt-get upgrade -y && \
@@ -37,8 +34,11 @@ RUN apt-get update -y && \
     echo "Set disable_coredump false" >> /etc/sudo.conf && \
     mkdir -p /srv/backup && \
     mkdir -p /srv/files && \
-    wget -q -nv --no-cookies https://www.maxprograms.com/downloads/RemoteTM/RemoteTM.war -O /tmp/RemoteTM.war && \
-    rm -rf /var/lib/tomcat9/webapps/ROOT && \
+    wget -q -nv --no-cookies "https://www.maxprograms.com/downloads/RemoteTM/RemoteTM.war" -O /tmp/RemoteTM.war && \
+    wget -q -nv --no-cookies "https://www.maxprograms.com/downloads/RemoteTM_backup.zip" -O /tmp/RemoteTM_backup.zip && \
+    wget -q -nv --no-cookies "https://github.com/vlombardino/RemoteTM/raw/master/files/tomcat-users.xml" -O /tmp/tomcat-users.xml && \
+    wget -q -nv --no-cookies "https://github.com/vlombardino/RemoteTM/raw/master/files/docker-entrypoint.sh" -O /tmp/docker-entrypoint.sh && \
+    wget -q -nv --no-cookies "https://github.com/vlombardino/RemoteTM/raw/master/files/RemoteTM-backup.sh" -O /tmp/RemoteTM-backup.sh && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     ln -s /var/lib/tomcat9/webapps /srv/ && \
     ln -s /var/lib/tomcat9/logs /srv/ && \
