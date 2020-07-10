@@ -15,8 +15,8 @@ if [ -f "/tmp/RemoteTM.war" ]; then
    mv /tmp/RemoteTM.war /var/lib/tomcat9/webapps/RemoteTM.war
 fi
 
-sed -i -e '9,11s/^/#/' -e '18s/^/#/' /usr/local/bin/docker-entrypoint.sh
-sed -i -e '14,16s/^/#/' -e '19s/^/#/' /usr/local/bin/docker-entrypoint.sh
+#Remove move and rename ROOT and RemoteTM.war command
+sed '8,20d' /usr/local/bin/docker-entrypoint.sh
 
 #start tomcat
 exec /usr/share/tomcat9/bin/catalina.sh run
