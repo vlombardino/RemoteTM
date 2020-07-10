@@ -21,13 +21,14 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y \
         sudo \
+        wget \
+        net-tools \
         unzip \
         default-jdk-headless \
         tomcat9 \
         tomcat9-admin \
         tomcat9-docs \
         tomcat9-examples && \
-        net-tools && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
