@@ -20,18 +20,19 @@ ENV DEBIAN_FRONTEND="noninteractive" \
 COPY files/ /tmp/
 
 #install packages
-	RUN apt-get update -y && \
-	    apt-get upgrade -y && \
-	    apt-get install -y \
-    		sudo \
-		    default-jdk-headless \			
-		    tomcat9 \
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+        sudo \
+    	default-jdk-headless \
+        tomcat9 \
         tomcat9-admin \
         tomcat9-docs \
         tomcat9-examples && \
-	    apt-get clean autoclean && \
-	    apt-get autoremove -y && \
-	    rm -rf /var/lib/apt/lists/* && \
+        net-tools && \
+    apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/* && \
 #configure image
 	    echo "Set disable_coredump false" >> /etc/sudo.conf && \
   		mkdir -p /srv/backup && \
