@@ -49,7 +49,7 @@ RUN apt-get update -y && \
     mv /tmp/RemoteTM_backup /tmp/backup && \
     chmod +x /tmp/docker-entrypoint.sh && \
     chmod +x /tmp/RemoteTM-backup.sh && \
-    chmod +x /tmp/backup/*.sh
+    chmod +x /tmp/backup/*.sh && \
     chown tomcat:tomcat /tmp/backup/* && \
     mv /var/lib/tomcat9/webapps/ROOT /tmp/ && \
     mv /tmp/tomcat-users.xml /etc/tomcat9/tomcat-users.xml.mod && \
