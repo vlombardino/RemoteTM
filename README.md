@@ -33,3 +33,5 @@ docker create \
   --restart unless-stopped \
   vlombardino/remotetm
 ```
+
+Login with these default credentials: User Name: sysadmin Password: secData
