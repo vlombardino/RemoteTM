@@ -34,20 +34,21 @@ RUN apt-get update -y && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
 #configure image
-	    echo "Set disable_coredump false" >> /etc/sudo.conf && \
-  		mkdir -p /srv/backup && \
-	    mkdir -p /srv/files && \
-	    rm -rf /var/lib/tomcat9/webapps/ROOT && \
-	    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
-	    ln -s /var/lib/tomcat9/webapps /srv/ && \
-	    ln -s /var/lib/tomcat9/logs /srv/ && \
-      chmod +x /tmp/docker-entrypoint.sh && \
-	  	chmod +x /tmp/RemoteTM-backup.sh && \
-	    chown tomcat:tomcat /tmp/backup/* && \
-	  	mv /tmp/docker-entrypoint.sh /usr/local/bin/ && \
-		  mv /tmp/RemoteTM-backup.sh /usr/local/bin/ && \
-	    mv /tmp/tomcat-users.xml /etc/tomcat9/tomcat-users.xml.mod && \
-	    mv /tmp/backup/ /srv/files/
+    echo "Set disable_coredump false" >> /etc/sudo.conf && \
+    mkdir -p /srv/backup && \
+    mkdir -p /srv/files && \
+    wget -q -nv --no-cookies https://www.maxprograms.com/downloads/RemoteTM/RemoteTM.war -O /tmp/RemoteTM.war && \
+    rm -rf /var/lib/tomcat9/webapps/ROOT && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
+    ln -s /var/lib/tomcat9/webapps /srv/ && \
+    ln -s /var/lib/tomcat9/logs /srv/ && \
+    chmod +x /tmp/docker-entrypoint.sh && \
+    chmod +x /tmp/RemoteTM-backup.sh && \
+    chown tomcat:tomcat /tmp/backup/* && \
+    mv /tmp/docker-entrypoint.sh /usr/local/bin/ && \
+    mv /tmp/RemoteTM-backup.sh /usr/local/bin/ && \
+    mv /tmp/tomcat-users.xml /etc/tomcat9/tomcat-users.xml.mod && \
+    mv /tmp/backup/ /srv/files/
 
 #expose volumes
 VOLUME ["/srv/webapps","/srv/backup","/srv/logs","/opt"]
