@@ -34,4 +34,6 @@ docker create \
   vlombardino/remotetm
 ```
 
-Login with these default credentials: User Name: sysadmin Password: secData
+* Luanch RemoteTM by going to the following link http://localhost:8080/RemoteTM
+* Enter your license or Request a trial key. 
+* Login with these default credentials: User Name: ***sysadmin*** Password: ***secData***
