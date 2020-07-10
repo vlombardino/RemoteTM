@@ -34,20 +34,22 @@ RUN apt-get update -y && \
     echo "Set disable_coredump false" >> /etc/sudo.conf && \
     mkdir -p /srv/backup && \
     mkdir -p /srv/files && \
-    wget -q -nv --no-cookies "https://www.maxprograms.com/downloads/RemoteTM/RemoteTM.war" -O /tmp/RemoteTM.war && \
-    wget -q -nv --no-cookies "https://www.maxprograms.com/downloads/RemoteTM_backup.zip" -O /tmp/RemoteTM_backup.zip && \
     wget -q -nv --no-cookies "https://github.com/vlombardino/RemoteTM/raw/master/files/tomcat-users.xml" -O /tmp/tomcat-users.xml && \
     wget -q -nv --no-cookies "https://github.com/vlombardino/RemoteTM/raw/master/files/docker-entrypoint.sh" -O /tmp/docker-entrypoint.sh && \
     wget -q -nv --no-cookies "https://github.com/vlombardino/RemoteTM/raw/master/files/RemoteTM-backup.sh" -O /tmp/RemoteTM-backup.sh && \
+    wget -q -nv --no-cookies "https://www.maxprograms.com/downloads/RemoteTM_backup.zip" -O /tmp/RemoteTM_backup.zip && \
+    wget -q -nv --no-cookies "https://www.maxprograms.com/downloads/RemoteTM/RemoteTM.war" -O /tmp/RemoteTM.war && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     ln -s /var/lib/tomcat9/webapps /srv/ && \
     ln -s /var/lib/tomcat9/logs /srv/ && \
     chmod +x /tmp/docker-entrypoint.sh && \
     chmod +x /tmp/RemoteTM-backup.sh && \
     chown tomcat:tomcat /tmp/backup/* && \
+    unzip /tmp/RemoteTM_backup.zip && \
+    unzip /tmp/RemoteTM_backup.zip -d /tmp/backup && \
+    mv /tmp/tomcat-users.xml /etc/tomcat9/tomcat-users.xml.mod && \
     mv /tmp/docker-entrypoint.sh /usr/local/bin/ && \
     mv /tmp/RemoteTM-backup.sh /usr/local/bin/ && \
-    mv /tmp/tomcat-users.xml /etc/tomcat9/tomcat-users.xml.mod && \
     mv /tmp/backup/ /srv/files/
 
 #expose volumes
