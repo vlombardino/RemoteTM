@@ -23,7 +23,8 @@ RUN apt-get update -y && \
         sudo \
         wget \
         net-tools \
-        unzip \
+        unzip && \
+    apt-get install -y \
         default-jdk-headless \
         tomcat9 \
         tomcat9-admin \
