@@ -45,7 +45,7 @@ RUN apt-get update -y && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     ln -s /var/lib/tomcat9/webapps /srv/ && \
     ln -s /var/lib/tomcat9/logs /srv/ && \
-    unzip /tmp/RemoteTM_backup.zip && \
+    unzip /tmp/RemoteTM_backup.zip -d /tmp/ && \
     mv /tmp/RemoteTM_backup /tmp/backup && \
     chmod +x /tmp/docker-entrypoint.sh && \
     chmod +x /tmp/RemoteTM-backup.sh && \
