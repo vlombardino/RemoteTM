@@ -8,7 +8,7 @@ Tomcat server running [RemoteTM Web Server](https://www.maxprograms.com/products
 * RemoteTM Web Server (4.0-6)
   * Database Backup Scripts
 
-## Notes
+## User Notes
 Tomcat management console has been defaulted to admin:admin. If you would like to use a different username and/or password change the following:
 * TOM_USER="***admin***"
 * TOM_PASS="***admin***"
@@ -17,6 +17,7 @@ Backup scripts need a username and password. For the backup script to work chang
 * BACK_USER="***sysadmin***"
 * BACK_PASSWORD="***nopassword***"
 
+## Create Docker Image
 ```
 docker create \
   --name=remotetm \
@@ -34,6 +35,14 @@ docker create \
   vlombardino/remotetm
 ```
 
+## Web Access
 * Luanch RemoteTM by going to the following link http://localhost:8080/RemoteTM
 * Enter your license or Request a trial key. 
 * Login with these default credentials: User Name: ***sysadmin*** Password: ***secData***
+
+## Backup
+To create a backup of the data run the script RemoteTM-backup.sh. It will create a TMX folder and export each memory in a tmx file organized by date. To run the RemoteTM-backup.sh command you can us the following:
+```
+docker exec -it CONTAINERNAME RemoteTM-backup
+
+```
