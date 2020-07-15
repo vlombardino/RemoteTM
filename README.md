@@ -43,6 +43,6 @@ docker create \
 ## Backup
 To create a backup of the data run the script RemoteTM-backup.sh. It will create a TMX folder and export each memory in a tmx file organized by date. To run the RemoteTM-backup.sh command you can us the following:
 ```
-docker exec -it CONTAINERNAME RemoteTM-backup
+docker exec -it CONTAINERNAME RemoteTM-backup.sh
 
 ```
